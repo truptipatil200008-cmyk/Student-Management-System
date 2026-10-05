@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">S</div>
+
+                <div>
+                    <h2>StudentHub</h2>
+                    <p>Management System</p>
+                </div>
+            </div>
+
+            <div class="menu-title">MAIN MENU</div>
+
+            <nav>
+
+                <a href="#" class="active">
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+
+                <a href="#">
+                    <span>♙</span>
+                    Students
+                </a>
+
+                <a href="#">
+                    <span>＋</span>
+                    Add Student
+                </a>
+
+                <a href="#">
+                    <span>⌕</span>
+                    Search
+                </a>
+
+                <a href="#">
+                    <span>ⓘ</span>
+                    About
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <p>Student Management</p>
+                <span>Academic Year 2026</span>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+        <main class="main">
+
+            <!-- TOP BAR -->
+            <header class="topbar">
+
+                <div>
+                    <p class="small-title">OVERVIEW</p>
+                    <h1>Dashboard</h1>
+                    <p class="welcome">
+                        Welcome back, Trupti 👋
+                    </p>
+                </div>
+
+                <div class="profile">
+
+                    <div class="profile-avatar">
+                        TP
+                    </div>
+
+                    <div class="profile-text">
+                        <strong>Trupti Patil</strong>
+                        <span>Division C</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- STUDENT PROFILE -->
+            <section class="student-profile">
+
+                <div class="profile-left">
+
+                    <div class="large-avatar">
+                        TP
+                    </div>
+
+                    <div>
+                        <p class="label">STUDENT NAME</p>
+                        <h2>Trupti Patil</h2>
+                        <p class="course">
+                            Diploma in Computer Engineering
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="profile-details">
+
+                    <div>
+                        <span>Division</span>
+                        <strong>C</strong>
+                    </div>
+
+                    <div>
+                        <span>Semester</span>
+                        <strong>5th</strong>
+                    </div>
+
+                    <div>
+                        <span>Academic Year</span>
+                        <strong>2026</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+            <section class="stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        👨‍🎓
+                    </div>
+
+                    <div>
+                        <p>Total Students</p>
+                        <h2 id="totalStudents">50</h2>
+                        <span class="positive">↑ 8% this month</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        👨
+                    </div>
+
+                    <div>
+                        <p>Male Students</p>
+                        <h2 id="maleStudents">28</h2>
+                        <span class="positive">↑ 5% this month</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon pink">
+                        👩
+                    </div>
+
+                    <div>
+                        <p>Female Students</p>
+                        <h2 id="femaleStudents">22</h2>
+                        <span class="positive">↑ 4% this month</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STUDENT TABLE -->
+            <section class="content-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Student Directory</h2>
+                        <p>Manage and view all registered students</p>
+                    </div>
+
+                    <button class="add-button"
+                            onclick="document.getElementById('studentName').focus()">
+                        ＋ Add Student
+                    </button>
+
+                </div>
+
+
+                <!-- SEARCH -->
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search by name, email or course..."
+                        onkeyup="searchStudent()"
+                    >
+
+                </div>
+
+
+                <!-- TABLE -->
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>ID</th>
+                                <th>STUDENT</th>
+                                <th>EMAIL</th>
+                                <th>COURSE</th>
+                                <th>SEMESTER</th>
+                                <th>ACTION</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="studentTableBody">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ADD STUDENT -->
+            <section class="content-card add-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Add New Student</h2>
+                        <p>Enter student information below</p>
+                    </div>
+
+                </div>
+
+
+                <div class="form">
+
+                    <div class="input-group">
+
+                        <label>Student Name</label>
+
+                        <input
+                            type="text"
+                            id="studentName"
+                            placeholder="Enter student name"
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Email Address</label>
+
+                        <input
+                            type="email"
+                            id="studentEmail"
+                            placeholder="Enter email address"
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Course</label>
+
+                        <input
+                            type="text"
+                            id="studentCourse"
+                            placeholder="e.g. Computer Engineering"
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Semester</label>
+
+                        <input
+                            type="text"
+                            id="studentSemester"
+                            placeholder="e.g. 5th"
+                        >
+
+                    </div>
+
+                    <button class="submit-button"
+                            onclick="addStudent()">
+                        Add Student
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer>
+                StudentHub © 2026 · Student Management System
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
